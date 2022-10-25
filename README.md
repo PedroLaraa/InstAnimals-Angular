@@ -3,4 +3,6 @@
 
 #
 
-- Rede social para colocar fotos dos seus pets, desenvolvida juntamento de um curso da Alura.
+```
+Rede social para colocar fotos dos seus pets, desenvolvida juntamento de um curso da Alura.
+```

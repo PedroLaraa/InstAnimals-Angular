@@ -1,17 +1,43 @@
 <h4 class="text-center">Registre-se e mostre seu pet pro mundo!</h4>
 
-<form action="" class="form mt-4">
+<form action="" class="form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
   <div class="form-group mt-2">
-    <input type="text" placeholder="e-mail" class="form-control" />
+    <input type="text" placeholder="e-mail" class="form-control" formControlName="email" />
+    <app-message *ngIf="
+    novoUsuarioForm.get('email')?.errors?.['required'] &&
+    novoUsuarioForm.get('email')?.touched" mensagem="Email obrigatório"
+    >
+    </app-message>
+    <app-message *ngIf="
+    novoUsuarioForm.get('email')?.errors?.['email'] &&
+    novoUsuarioForm.get('email')?.touched" mensagem="E-mail no formato incorreto"
+    >
+    </app-message>
   </div>
   <div class="form-group mt-2">
-    <input type="text" placeholder="Nome Completo" class="form-control" />
+    <input type="text" placeholder="Nome Completo" class="form-control" formControlName="fullName" />
+    <app-message
+    *ngIf="novoUsuarioForm.get('fullName')?.errors &&
+    novoUsuarioForm.get('fullName')?.touched
+    "
+    mensagem="Nome inválido"
+    >
+
+    </app-message>
   </div>
   <div class="form-group mt-2">
-    <input type="text" placeholder="Usuário" class="form-control">
+    <input type="text" placeholder="Usuário" class="form-control" formControlName="userName" />
+    <app-message
+    *ngIf="novoUsuarioForm.get('userName')?.errors &&
+    novoUsuarioForm.get('userName')?.touched
+    "
+    mensagem="Usuário deve ser em letra minúcula"
+    >
+
+    </app-message>
   </div>
   <div class="form-group mt-2">
-    <input type="password" placeholder="Senha" class="form-control">
+    <input type="password" placeholder="Senha" class="form-control" formControlName="password" />
   </div>
   <button class="btn btn-primary btn-block mt-2">Cadastro</button>
 </form>
